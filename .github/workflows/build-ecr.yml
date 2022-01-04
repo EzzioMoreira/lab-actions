@@ -50,5 +50,8 @@ jobs:
       with:
         destination_branch: "stage"
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        pr_label: "feature, automated pr"
-        pr_title: "[Example] Simple demo"
+        commit-message: Auto Pull Request
+        title: Your desired title
+        body: Auto-created Pull Request
+        branch: ${{ github.ref }} # The branch where you commit
+        base: develop # Don't forget to specify the right base branch here
