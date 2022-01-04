@@ -48,10 +48,10 @@ jobs:
     - name: Create pull request
       uses: repo-sync/pull-request@v2
       with:
-        source_branch: ""
-        destination_branch: "master"
+        source_branch: ""                                 # If blank, default: triggered branch
+        destination_branch: "stage"                      # If blank, default: main
         github_token: ${{ secrets.GITHUB_TOKEN }}
         pr_title: "SRE-152 - ${{ github.ref }}"
-        pr_body: ${{ github.event.head_commit.message }}
+        pr_body: ${{ github.event.head_commit.message }} ${{ github.event.before }} ${{ github.event.after }}
         pr_label: "auto-pr"
 #        pr_template: ".github/PULL_REQUEST_TEMPLATE.md"
