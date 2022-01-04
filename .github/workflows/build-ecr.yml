@@ -49,7 +49,7 @@ jobs:
       uses: repo-sync/pull-request@v2
       with:
         source_branch: ""                                 # If blank, default: triggered branch
-        destination_branch: "stage"                      # If blank, default: main
+        destination_branch: "master"                      # If blank, default: main
         github_token: ${{ secrets.GITHUB_TOKEN }}
         pr_title: "SRE-152 - ${{ github.ref }}"
         pr_body: ${{ github.event.head_commit.message }} ${{ github.event.before }} ${{ github.event.after }}
