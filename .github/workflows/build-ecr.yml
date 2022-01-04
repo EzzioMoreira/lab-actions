@@ -52,5 +52,5 @@ jobs:
         destination_branch: "master"
         github_token: ${{ secrets.GITHUB_TOKEN }}
         pr_title: "SRE-152 - ${{ github.ref }}"
-        pr_body: ":crown: *An automated PR* last commit ${{ github.event.commit[0].message }} and ${{ github.event.head_commit.message }}"
+        pr_body: ${{ github.event.head_commit.message }}
         pr_label: "auto-pr"
