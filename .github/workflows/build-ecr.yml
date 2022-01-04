@@ -53,9 +53,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         pr_title: "Pulling ${{ github.ref }} into master"
         pr_body: ":crown: *An automated PR*"
-        pr_reviewer: "wei,worker"                         # Comma-separated list (no spaces)
-        pr_assignee: "wei,worker"                         # Comma-separated list (no spaces)
         pr_label: "auto-pr"                               # Comma-separated list (no spaces)
-        pr_milestone: "Milestone 1"                       # Milestone name
-        pr_draft: true                                    # Creates pull request as draft
-        pr_allow_empty: true                              # Creates pull request even if there are no changes
