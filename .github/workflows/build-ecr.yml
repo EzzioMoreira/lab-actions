@@ -61,7 +61,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source-directory: '*.*'
+        source-directory: 'src'
         destination-github-username: 'EzzioMoreira'
         destination-repository-name: 'app-react'
         target-branch: 'stage'
