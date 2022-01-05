@@ -64,6 +64,8 @@ jobs:
         source-directory: 'src'
         destination-github-username: 'EzzioMoreira'
         destination-repository-name: 'app-react'
-        target-branch: 'stage'
+        target-branch: 'main'
         user-email: enzziom@gmail.com
         commit-message: "[ci skip] deploy from ${{ steps.prep.outputs.VERSION }}"
+        run: | 
+          ls -lha
