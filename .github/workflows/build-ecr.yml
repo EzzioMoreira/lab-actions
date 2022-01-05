@@ -54,7 +54,6 @@ jobs:
         pr_title: "SRE-152 - ${{ github.ref }}"
         pr_body: ${{ github.event.head_commit.message }} ${{ github.event.before }} ${{ github.event.after }}
         pr_label: "auto-pr"
-#        pr_template: ".github/PULL_REQUEST_TEMPLATE.md"
 
     - name: Push directory to another repository
       uses: cpina/github-action-push-to-another-repository@main
