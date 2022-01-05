@@ -67,3 +67,4 @@ jobs:
         target-branch: 'main'
         user-email: enzziom@gmail.com
         commit-message: "[ci skip] deploy from ${{ steps.prep.outputs.VERSION }}"
+ 
