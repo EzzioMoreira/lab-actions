@@ -56,3 +56,14 @@ jobs:
         pr_label: "auto-pr"
 #        pr_template: ".github/PULL_REQUEST_TEMPLATE.md"
 
+    - name: Push directory to another repository
+      uses: cpina/github-action-push-to-another-repository@v1.2
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source-directory: 'Kubernetes'
+        destination-github-username: 'EzzioMoreira'
+        destination-repository-name: 'app-react'
+        target-branch: 'main'
+        user-email: enzziom@gmail.com
+        commit-message: "[ci skip] deploy from ${{ steps.prep.outputs.VERSION }}"
