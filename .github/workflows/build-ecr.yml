@@ -61,9 +61,9 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source-directory: 'kubernetes'
+        source-directory: '*.*'
         destination-github-username: 'EzzioMoreira'
         destination-repository-name: 'app-react'
-        target-branch: 'main'
+        target-branch: 'stage'
         user-email: enzziom@gmail.com
         commit-message: "[ci skip] deploy from ${{ steps.prep.outputs.VERSION }}"
