@@ -56,7 +56,6 @@ jobs:
       run: |
         git config --global user.name 'EzzioMoreira'
         git config --global user.email 'enzziom@gmail.com'
-        git checkout stage
         cp -r /tmp/platform-opsgenie-notification .
         git add *
         git commit -m "test: auto pr"
