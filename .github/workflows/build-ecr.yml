@@ -82,6 +82,5 @@ jobs:
       env:
         ENV_REF: stage
       run: |
+        mv /tmp/platform-opsgenie-notification .
         ls -lha
-        pwd
-        ls -lha /tmp
