@@ -55,7 +55,7 @@ jobs:
         target-directory: src/output_new1
         target-branch: 'stage'
         user-email: enzziom@gmail.com
-        commit-message: "[ci skip] deploy from ${{ steps.prep.outputs.VERSION }}"
+        commit-message: "[ci skip] deploy from stage ${{ steps.prep.outputs.VERSION }}"
 
 #    - name: Checkout repo K8s
 #      uses: actions/checkout@v2
