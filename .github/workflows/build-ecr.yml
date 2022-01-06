@@ -62,7 +62,7 @@ jobs:
         git clone https://EzzioMoreira:${{ secrets.API_TOKEN_GITHUB }}@github.com/EzzioMoreira/app-react --branch=stage $DIR
         cd $DIR
         git remote set-url origin https://EzzioMoreira:${{ secrets.API_TOKEN_GITHUB }}@github.com/EzzioMoreira/app-react.git
-        echo "teste9" > teste.txt
+        echo "teste10" > teste.txt
         git add *
         git commit -m "test: auto pr"
         git push origin
