@@ -83,9 +83,10 @@ jobs:
         ENV_REF: stage
         TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       run: |
+        export TOKEN_GITHUB=${{ secrets.API_TOKEN_GITHUB }}
         git config --global user.name 'EzzioMoreira'
         git config --global user.email 'enzziom@gmail.com'
-        git remote set-url origin https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/EzzioMoreira/app-react
+        git remote set-url origin https://x-access-token:$API_TOKEN_GITHUB@github.com/EzzioMoreira/app-react
         git checkout stage
         cp -r /tmp/platform-opsgenie-notification .
         git add *
