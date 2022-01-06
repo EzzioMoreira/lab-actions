@@ -45,16 +45,6 @@ jobs:
         mkdir /tmp/platform-opsgenie-notification
         envsubst <./kubernetes/cronjob.yaml >/tmp/platform-opsgenie-notification/cronjob.yaml
         ls -lha /tmp
-    
-#    - name: Create pull request
-#      uses: repo-sync/pull-request@v2
-#      with:
-#        source_branch: ""                                 # If blank, default: triggered branch
-#        destination_branch: "master"                      # If blank, default: main
-#        github_token: ${{ secrets.GITHUB_TOKEN }}
-#        pr_title: "SRE-152 - ${{ github.ref }}"
-#        pr_body: ${{ github.event.head_commit.message }}
-#        pr_label: "auto-pr"
 
 #    - name: Push directory to another repository
 #      uses: cpina/github-action-push-to-another-repository@main
@@ -77,10 +67,20 @@ jobs:
         repository: 'EzzioMoreira/app-react'
         token: ${{ secrets.API_TOKEN_GITHUB }}
         path: stage
-    
-    - name: Auto Pull Request
-      env:
-        ENV_REF: stage
-      run: |
-        mv /tmp/platform-opsgenie-notification .
-        ls -lha
+
+    - name: Create pull request
+      uses: repo-sync/pull-request@v2
+      with:
+        source_branch: ""                                 # If blank, default: triggered branch
+        destination_branch: "stage"                      # If blank, default: main
+        github_token: ${{ secrets.API_TOKEN_GITHUB }}
+        pr_title: "SRE-152 - ${{ github.ref }}"
+        pr_body: ${{ github.event.head_commit.message }}
+        pr_label: "auto-pr"
+
+#    - name: Auto Pull Request
+#      env:
+#        ENV_REF: stage
+#      run: |
+#        mv /tmp/platform-opsgenie-notification .
+#        ls -lha
