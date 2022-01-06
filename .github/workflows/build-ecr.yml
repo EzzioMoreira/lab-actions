@@ -82,4 +82,6 @@ jobs:
       env:
         ENV_REF: stage
       run: |
+        ls -lha
+        pwd
         ls -lha /tmp
