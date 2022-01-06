@@ -78,5 +78,4 @@ jobs:
         token: ${{ secrets.API_TOKEN_GITHUB }}
         path: stage
         run: |
-          cp -r /tmp/platform-opsgenie-notification .
-          ls -lha
+          ls -lha /tmp
