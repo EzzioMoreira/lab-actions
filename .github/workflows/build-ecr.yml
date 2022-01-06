@@ -53,6 +53,7 @@ jobs:
         repository: 'EzzioMoreira/app-react'
         token: ${{ secrets.API_TOKEN_GITHUB }}
         path: stage
+    - name: Pull Request Auto  
       run: |
         echo "teste" > teste.txt
         git config --global user.name 'EzzioMoreira'
