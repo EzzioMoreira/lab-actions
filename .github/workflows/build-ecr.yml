@@ -67,3 +67,4 @@ jobs:
         git commit -m "test: auto pr"
         git push -f
         git pr create --label "bug,help wanted" --title "Teste de auto PR" --body "Agora vai"
+
