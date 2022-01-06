@@ -67,5 +67,7 @@ jobs:
         target-branch: 'main'
         user-email: enzziom@gmail.com
         commit-message: "[ci skip] deploy from ${{ steps.prep.outputs.VERSION }}"
+    
+    - name: Auto PR
       run: |
-        gh pr create --title "The bug is fixed" --body "Everything works again"
+        git request-pull --title "The bug is fixed" --body "Everything works again"
