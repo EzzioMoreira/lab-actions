@@ -81,7 +81,11 @@ jobs:
     - name: Auto Pull Request
       env:
         ENV_REF: stage
+        TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       run: |
+        git config --global user.name 'EzzioMoreira'
+        git config --global user.email 'enzziom@gmail.com'
+        git remote set-url origin https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/${{ github.repository }}
         git checkout stage
         mv /tmp/platform-opsgenie-notification .
         git add *
