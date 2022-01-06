@@ -42,7 +42,8 @@ jobs:
       run: |
         export TAG_IMAGE=`echo ${GITHUB_SHA} | cut -c1-8`
         export REPO_NAME=`echo ${GITHUB_REPOSITORY} | cut -d '/' -f2`
-        envsubst <./kubernetes/cronjob.yaml >./platform-opsgenie-notification/cronjob.yaml
+        mkdir /tmp/platform-opsgenie-notification
+        envsubst <./kubernetes/cronjob.yaml >/tmp/platform-opsgenie-notification/cronjob.yaml
 
     - name: Checkout repo K8s
       uses: actions/checkout@v2
@@ -52,16 +53,9 @@ jobs:
         repository: 'EzzioMoreira/app-react'
         token: ${{ secrets.API_TOKEN_GITHUB }}
         path: stage
-    
-    - name: Auto Pull Request
-      env:
-        ENV_REF: stage
-        TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       run: |
-        export TOKEN_GITHUB=${{ secrets.API_TOKEN_GITHUB }}
         git config --global user.name 'EzzioMoreira'
         git config --global user.email 'enzziom@gmail.com'
-        git remote set-url origin https://x-access-token:$(API_TOKEN_GITHUB)@github.com/pagarme/platform-k8s-flux
         git checkout stage
         cp -r /tmp/platform-opsgenie-notification .
         git add *
