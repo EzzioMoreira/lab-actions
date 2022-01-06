@@ -44,39 +44,26 @@ jobs:
         export REPO_NAME=`echo ${GITHUB_REPOSITORY} | cut -d '/' -f2`
         envsubst <./kubernetes/cronjob.yaml >./platform-opsgenie-notification/cronjob.yaml
 
-    - name: Push directory to another repository
-      uses: cpina/github-action-push-to-another-repository@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+    - name: Checkout repo K8s
+      uses: actions/checkout@v2
+      env: 
+        GIT_REPOSITORY: 'EzzioMoreira/app-react'
       with:
-        source-directory: 'platform-opsgenie-notification'
-        destination-github-username: 'EzzioMoreira'
-        destination-repository-name: 'app-react'
-        target-directory: src/output_new1
-        target-branch: 'stage'
-        user-email: enzziom@gmail.com
-        commit-message: "[ci skip] deploy from stage ${{ steps.prep.outputs.VERSION }}"
-
-#    - name: Checkout repo K8s
-#      uses: actions/checkout@v2
-#      env: 
-#        GIT_REPOSITORY: 'EzzioMoreira/app-react'
-#      with:
-#        repository: 'EzzioMoreira/app-react'
-#        token: ${{ secrets.API_TOKEN_GITHUB }}
-#        path: stage
-#    
-#    - name: Auto Pull Request
-#      env:
-#        ENV_REF: stage
-#        TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-#      run: |
-#        export TOKEN_GITHUB=${{ secrets.API_TOKEN_GITHUB }}
-#        git config --global user.name 'EzzioMoreira'
-#        git config --global user.email 'enzziom@gmail.com'
-#        git remote set-url origin https://x-access-token:$API_TOKEN_GITHUB@github.com/EzzioMoreira/app-react
-#        git checkout stage
-#        cp -r /tmp/platform-opsgenie-notification .
-#        git add *
-#        git commit -m "test: auto pr"
-#        git push -f
+        repository: 'EzzioMoreira/app-react'
+        token: ${{ secrets.API_TOKEN_GITHUB }}
+        path: stage
+    
+    - name: Auto Pull Request
+      env:
+        ENV_REF: stage
+        TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      run: |
+        export TOKEN_GITHUB=${{ secrets.API_TOKEN_GITHUB }}
+        git config --global user.name 'EzzioMoreira'
+        git config --global user.email 'enzziom@gmail.com'
+        git remote set-url origin https://x-access-token:$(API_TOKEN_GITHUB)@github.com/pagarme/platform-k8s-flux
+        git checkout stage
+        cp -r /tmp/platform-opsgenie-notification .
+        git add *
+        git commit -m "test: auto pr"
+        git push -f
