@@ -58,8 +58,8 @@ jobs:
       run: |
         git config --global user.name 'EzzioMoreira'
         git config --global user.email 'enzziom@gmail.com'
-        git clone https://EzzioMoreira:${{ secrets.API_TOKEN_GITHUB }}@github.com/EzzioMoreira/app-react --branch=stage stage
-        cd stage
+        git clone https://EzzioMoreira:${{ secrets.API_TOKEN_GITHUB }}@github.com/EzzioMoreira/app-react --branch=stage stage1
+        cd stage1
         git checkout -c stage teste
         git remote set-url origin https://EzzioMoreira:${{ secrets.API_TOKEN_GITHUB }}@github.com/EzzioMoreira/app-react.git
         echo "teste" > teste.txt
