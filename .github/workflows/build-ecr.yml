@@ -35,15 +35,15 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$(echo ${GITHUB_SHA} | cut -c1-8) .
 
-    - name: Build and push manifest to GitOps
-      env:
-        ENV_REF: stage
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-      run: |
-        export TAG_IMAGE=`echo ${GITHUB_SHA} | cut -c1-8`
-        export REPO_NAME=`echo ${GITHUB_REPOSITORY} | cut -d '/' -f2`
-        envsubst <./kubernetes/cronjob.yaml >./sox-cronjob.yaml
-        cat ./sox-cronjob.yaml
+#    - name: Build and push manifest to GitOps
+#      env:
+#        ENV_REF: stage
+#        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+#      run: |
+#        export TAG_IMAGE=`echo ${GITHUB_SHA} | cut -c1-8`
+#        export REPO_NAME=`echo ${GITHUB_REPOSITORY} | cut -d '/' -f2`
+#        envsubst <./kubernetes/cronjob.yaml >./sox-cronjob.yaml
+#        cat ./sox-cronjob.yaml
     
 #    - name: Create pull request
 #      uses: repo-sync/pull-request@v2
