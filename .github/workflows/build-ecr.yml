@@ -58,21 +58,21 @@ jobs:
 #        target-branch: 'main'
 #        user-email: enzziom@gmail.com
 #        commit-message: "[ci skip] deploy from ${{ steps.prep.outputs.VERSION }}"
-
+jobs2:
+  pull-request:
+    runs-on: ubuntu-20.04
+    steps:
     - name: Checkout repo K8s
       uses: actions/checkout@v2
-#      env: 
-#        GIT_REPOSITORY: 'EzzioMoreira/app-react'
       with:
         repository: 'EzzioMoreira/app-react'
         token: ${{ secrets.API_TOKEN_GITHUB }}
         path: stage
-
     - name: Create pull request
       uses: repo-sync/pull-request@v2
       with:
         source_branch: ""                                 # If blank, default: triggered branch
-        destination_branch: "stage"                      # If blank, default: main
+        destination_branch: "main"                      # If blank, default: main
         github_token: ${{ secrets.API_TOKEN_GITHUB }}
         pr_title: "SRE-152 - ${{ github.ref }}"
         pr_body: ${{ github.event.head_commit.message }}
