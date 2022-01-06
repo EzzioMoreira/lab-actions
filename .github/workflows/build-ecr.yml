@@ -53,11 +53,13 @@ jobs:
         repository: 'EzzioMoreira/app-react'
         token: ${{ secrets.API_TOKEN_GITHUB }}
         path: stage
+    
     - name: Pull Request Auto  
       run: |
-        echo "teste" > teste.txt
         git config --global user.name 'EzzioMoreira'
         git config --global user.email 'enzziom@gmail.com'
+        git remote set-url origin https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/EzzioMoreira/app-react
+        git checkout stage
         git add *
         git commit -m "test: auto pr"
         git push -f
