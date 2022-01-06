@@ -58,12 +58,12 @@ jobs:
       run: |
         git config --global user.name 'EzzioMoreira'
         git config --global user.email 'enzziom@gmail.com'
-        git clone https://EzzioMoreira:${{ secrets.API_TOKEN_GITHUB }}@github.com/EzzioMoreira/app-react --branch=stage stage2
-        cd stage2
-        git checkout -c stage teste
+        git clone https://EzzioMoreira:${{ secrets.API_TOKEN_GITHUB }}@github.com/EzzioMoreira/app-react --branch=stage stage3
+        cd stage3
+        git checkout -b teste1
         git remote set-url origin https://EzzioMoreira:${{ secrets.API_TOKEN_GITHUB }}@github.com/EzzioMoreira/app-react.git
         echo "teste" > teste.txt
         git add *
         git commit -m "test: auto pr"
         git push -f
-#        git pr create --label "bug,help wanted" --title "Teste de auto PR" --body "Agora vai"
+        git pr create --label "bug,help wanted" --title "Teste de auto PR" --body "Agora vai"
