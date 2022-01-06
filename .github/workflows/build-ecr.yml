@@ -65,4 +65,4 @@ jobs:
         git add *
         git commit -m "test: auto pr"
         git push origin 
-#        git pr create --label "bug,help wanted" --title "Teste de auto PR" --body "Agora vai"
+        git pr create --label "auto-pr" --title "Teste de auto PR" --body "Agora vai"
