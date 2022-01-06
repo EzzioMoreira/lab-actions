@@ -45,29 +45,35 @@ jobs:
         envsubst <./kubernetes/cronjob.yaml >./sox-cronjob.yaml
         cat ./sox-cronjob.yaml
     
-    - name: Create pull request
-      uses: repo-sync/pull-request@v2
-      with:
-        source_branch: ""                                 # If blank, default: triggered branch
-        destination_branch: "master"                      # If blank, default: main
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        pr_title: "SRE-152 - ${{ github.ref }}"
-        pr_body: ${{ github.event.head_commit.message }}
-        pr_label: "auto-pr"
+#    - name: Create pull request
+#      uses: repo-sync/pull-request@v2
+#      with:
+#        source_branch: ""                                 # If blank, default: triggered branch
+#        destination_branch: "master"                      # If blank, default: main
+#        github_token: ${{ secrets.GITHUB_TOKEN }}
+#        pr_title: "SRE-152 - ${{ github.ref }}"
+#        pr_body: ${{ github.event.head_commit.message }}
+#        pr_label: "auto-pr"
 
-    - name: Push directory to another repository
-      uses: cpina/github-action-push-to-another-repository@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source-directory: 'kubernetes'
-        destination-github-username: 'EzzioMoreira'
-        destination-repository-name: 'app-react'
-        target-directory: src/output_new
-        target-branch: 'main'
-        user-email: enzziom@gmail.com
-        commit-message: "[ci skip] deploy from ${{ steps.prep.outputs.VERSION }}"
+#    - name: Push directory to another repository
+#      uses: cpina/github-action-push-to-another-repository@main
+#      env:
+#        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+#      with:
+#        source-directory: 'kubernetes'
+#        destination-github-username: 'EzzioMoreira'
+#        destination-repository-name: 'app-react'
+#        target-directory: src/output_new
+#        target-branch: 'main'
+#        user-email: enzziom@gmail.com
+#        commit-message: "[ci skip] deploy from ${{ steps.prep.outputs.VERSION }}"
     
-    - name: Auto PR
+    - name: Auto PR and push dir
+      uses: actions/checkout@v2
+      env: 
+        GIT_REPOSITORY: 'EzzioMoreira/app-react'
+      with:
+        repository: $GIT_REPOSITORY
+        token: ${{ secrets.API_TOKEN_GITHUB }}
       run: |
-        git request-pull --title "The bug is fixed" --body "Everything works again"
+        ls -lha
