@@ -68,12 +68,11 @@ jobs:
 #        user-email: enzziom@gmail.com
 #        commit-message: "[ci skip] deploy from ${{ steps.prep.outputs.VERSION }}"
     
-#    - name: Auto PR and push dir
-#      uses: actions/checkout@v2
+    - name: Auto PR and push dir
+      uses: actions/checkout@v2
 #      env: 
 #        GIT_REPOSITORY: 'EzzioMoreira/app-react'
-#      with:
-#        repository: $GIT_REPOSITORY
-#        token: ${{ secrets.API_TOKEN_GITHUB }}
-#      run: |
-#        ls -lha
+      with:
+        repository: 'EzzioMoreira/app-react'
+        token: ${{ secrets.API_TOKEN_GITHUB }}
+        ref: stage
