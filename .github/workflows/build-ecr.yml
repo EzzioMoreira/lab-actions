@@ -69,7 +69,7 @@ jobs:
 #        user-email: enzziom@gmail.com
 #        commit-message: "[ci skip] deploy from ${{ steps.prep.outputs.VERSION }}"
 
-    - name: Auto PR and push dir
+    - name: Checkout repo K8s
       uses: actions/checkout@v2
 #      env: 
 #        GIT_REPOSITORY: 'EzzioMoreira/app-react'
@@ -77,5 +77,9 @@ jobs:
         repository: 'EzzioMoreira/app-react'
         token: ${{ secrets.API_TOKEN_GITHUB }}
         path: stage
-        run: |
-          ls -lha /tmp
+    
+    - name: Auto Pull Request
+      env:
+        ENV_REF: stage
+      run: |
+        ls -lha /tmp
