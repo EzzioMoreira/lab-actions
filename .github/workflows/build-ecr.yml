@@ -67,7 +67,7 @@ jobs:
 #        target-branch: 'main'
 #        user-email: enzziom@gmail.com
 #        commit-message: "[ci skip] deploy from ${{ steps.prep.outputs.VERSION }}"
-    
+
     - name: Auto PR and push dir
       uses: actions/checkout@v2
 #      env: 
@@ -75,4 +75,4 @@ jobs:
       with:
         repository: 'EzzioMoreira/app-react'
         token: ${{ secrets.API_TOKEN_GITHUB }}
-        ref: stage
+        path: stage
