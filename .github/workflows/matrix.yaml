@@ -20,6 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ${{needs.job1.outputs.matrix}}
+        node: ${{ fromJson(needs.job1.outputs.matrix) }}
     steps:
       - run: echo "🎉 The job was automatically triggered by an event."
