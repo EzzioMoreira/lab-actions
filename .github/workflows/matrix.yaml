@@ -20,7 +20,7 @@ jobs:
     needs: [job1]
     runs-on: ubuntu-latest
     env:
-      TASK: ${{ fromJson(needs.job1.outputs.task) }}
+      TASK: ${{ fromJson(needs.job1.outputs.matrix) }}
     steps:
       - run: |
           echo $TASK
