@@ -8,9 +8,17 @@ on:
 
 env:
   task: live_db
-  service: ddog-postgres
+  service: ddog-agent
 
 jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: | 
+          echo "::set-output name=matrix::[10, 12, 14]"
          
   job1:
     needs: [job1]
