@@ -10,7 +10,6 @@ env:
   task:
    - task:
      live_db
-     core_db
    - service:
      ddog-postgres
 jobs:
@@ -25,3 +24,5 @@ jobs:
           echo $github.repository
           echo ${{env.task}}
           echo ${{env.service}}
+          echo ${{GITHUB_JOB}}
+          echo ${{needs.job1.outputs.GITHUB_JOB}}
