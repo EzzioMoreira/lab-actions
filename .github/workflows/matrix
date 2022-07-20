@@ -1,3 +1,5 @@
+name: Teste com Matrix
+
 on:
   push:
     branches:
