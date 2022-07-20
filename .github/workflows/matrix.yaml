@@ -32,3 +32,4 @@ jobs:
           echo ${{env.service}}
           echo ${{GITHUB.JOB}}
           $github.job
+          ${{env.task}}-${{github.job}}
