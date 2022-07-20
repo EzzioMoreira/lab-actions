@@ -28,6 +28,5 @@ jobs:
           echo $TASK
           echo ${{github.repository}}
           echo $github.repository
-          echo ${{env.task}}
           echo ${{env.service}}
-          ${{ github.event.repository.name }}-${{github.job}}
+          echo ${{ github.event.repository.name }}-${{github.job}}
