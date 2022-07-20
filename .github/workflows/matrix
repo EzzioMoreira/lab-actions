@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: echo "::set-output name=matrix::[10, 12, 14]"
+  
+  job2:
+    needs: [job1]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ${{needs.job1.outputs.matrix}}
+    steps:
+      - run: echo "🎉 The job was automatically triggered by an event."
