@@ -24,7 +24,7 @@ jobs:
     strategy:
       matrix:
         task: ${{ fromJson(needs.job1.outputs.task) }}
-        service: ${{ fromJson(needs.job1.outputs.service) }}
+        service: ${{ needs.job1.outputs.service) }}
     steps:
       - run: |
           echo "🎉 The job was automatically triggered by an event."
