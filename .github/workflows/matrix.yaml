@@ -10,11 +10,11 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      task: ${{ steps.set-matrix.outputs.task }}
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - id: set-matrix
         run: | 
-          echo "::set-output name=task::[1, 2]"
+          run: echo "::set-output name=matrix::[10, 12, 14]"
          
   job2:
     needs: [job1]
