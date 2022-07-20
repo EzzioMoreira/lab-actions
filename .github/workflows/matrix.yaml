@@ -7,11 +7,9 @@ on:
   workflow_dispatch:
 
 env:
-  task:
-   - task:
-     live_db
-   - service:
-     ddog-postgres
+  task: live_db
+  service: ddog-postgres
+
 jobs:
          
   job1:
