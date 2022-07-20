@@ -27,9 +27,4 @@ jobs:
       ECS_TASK_DEF: ${{ github.event.repository.name }}-${{github.job}}
     steps:
       - run: |
-          echo $TASK
-          echo ${{github.repository}}
-          echo $github.repository
-          echo ${{env.service}}
-          echo `${{ github.event.repository.name }}-${{github.job}}`
           echo $ECS_TASK_DEF
