@@ -6,17 +6,16 @@ on:
       - master
   workflow_dispatch:
 
+env:
+  task:
+   - task:
+     live_db
+     core_db
+   - service:
+     ddog-postgres
 jobs:
-  job1:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-    steps:
-      - id: set-matrix
-        run: | 
-          echo "::set-output name=matrix::[10, 12, 14]"
          
-  job2:
+  job1:
     needs: [job1]
     runs-on: ubuntu-latest
     steps:
@@ -24,5 +23,5 @@ jobs:
           echo $TASK
           echo ${{github.repository}}
           echo $github.repository
-          echo ${{ fromJson(needs.job1.outputs.matrix) }}
-          ${{ fromJson(needs.job1.outputs.matrix) }}
+          echo ${{env.task}}
+          echo ${{env.service}}
