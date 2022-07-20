@@ -23,4 +23,4 @@ jobs:
           echo ${{env.task}}
           echo ${{env.service}}
           echo ${{GITHUB_JOB}}
-          echo ${{needs.job1.outputs.GITHUB_JOB}}
+          echo ${{GITHUB.JOB}}
