@@ -19,10 +19,10 @@ jobs:
   job2:
     needs: [job1]
     runs-on: ubuntu-latest
-    env:
-      TASK: ${{ fromJson(needs.job1.outputs.matrix) }}
     steps:
       - run: |
           echo $TASK
           echo ${{github.repository}}
           echo $github.repository
+          echo ${{ fromJson(needs.job1.outputs.matrix) }}
+          ${{ fromJson(needs.job1.outputs.matrix) }}
