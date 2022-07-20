@@ -22,5 +22,4 @@ jobs:
           echo $github.repository
           echo ${{env.task}}
           echo ${{env.service}}
-          echo ${{GITHUB_JOB}}
           echo ${{GITHUB.JOB}}
