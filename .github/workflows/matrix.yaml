@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 env:
-  task: live_db
   service: ddog-agent
+  env: stg
 
 jobs:
   job1:
@@ -20,7 +20,7 @@ jobs:
         run: | 
           echo "::set-output name=matrix::[10, 12, 14]"
          
-  job2:
+  live_db:
     needs: [job1]
     runs-on: ubuntu-latest
     steps:
@@ -28,6 +28,6 @@ jobs:
           echo $TASK
           echo ${{github.repository}}
           echo $github.repository
-          echo ${{env.task}}
+          echo ${{env.task}}-${{env.task}}-${{GITHUB.JOB}}
           echo ${{env.service}}
           echo ${{GITHUB.JOB}}
