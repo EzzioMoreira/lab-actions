@@ -10,17 +10,23 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      task: ${{ steps.set-matrix.outputs.task }}
+      service: ${{ steps.set-matrix.outputs.service }}
     steps:
       - id: set-matrix
-        run: echo "::set-output name=matrix::[10, 12, 14]"
+        run: | 
+          echo "::set-output name=task::[task1, task2]"
+          echo "::set-output name=service::[service1, service2]"
   
   job2:
     needs: [job1]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        task: ${{ fromJson(needs.job1.outputs.matrix) }}
-        service: ${{ fromJson(needs.job1.outputs.matrix) }}
+        task: ${{ fromJson(needs.job1.outputs.task) }}
+        service: ${{ fromJson(needs.job1.outputs.service) }}
     steps:
-      - run: echo "🎉 The job was automatically triggered by an event."
+      - run: |
+          echo "🎉 The job was automatically triggered by an event."
+          echo ${{github.repository}}
+          echo $github.repository
