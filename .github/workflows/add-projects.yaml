@@ -7,10 +7,9 @@ on:
         description: "URL do projetcs github"
         required: true
         type: string
-
+    secrets:
       token:
         description: "Personal token para leitura/escrita projects github"
-        type: string
         required: true
 
 jobs:
@@ -18,7 +17,7 @@ jobs:
     name: Add issue to project
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/add-to-project@v0.0.5
+      - uses: actions/add-to-project@main
         with:
           project-url: {{ inputs.project_url }}
-          github-token: ${{ inputs.token }}
+          github-token: ${{ secrets.token }}

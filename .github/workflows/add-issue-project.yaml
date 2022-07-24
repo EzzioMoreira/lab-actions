@@ -9,4 +9,5 @@ jobs:
     uses: "EzzioMoreira/lab-actions/.github/workflows/add-projects.yaml@master"
     with:
       project_url: "https://github.com/users/EzzioMoreira/projects/2"
+    secrets:
       token: ${{ secrets.API_TOKEN_GITHUB }}
