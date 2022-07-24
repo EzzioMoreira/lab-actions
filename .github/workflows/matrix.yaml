@@ -1,9 +1,6 @@
 name: Teste com Matrix
 
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
 
 env:
