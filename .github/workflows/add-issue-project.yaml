@@ -10,4 +10,4 @@ jobs:
     with:
       project_url: https://github.com/orgs/mentoriaiac/projects/6
     secrets:  
-      token: ${{ secrets.API_TOKEN_GITHUB }}
+      github-token: ${{ secrets.API_TOKEN_GITHUB }}
