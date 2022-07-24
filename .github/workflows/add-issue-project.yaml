@@ -10,4 +10,3 @@ jobs:
     with:
       project_url: "https://github.com/users/EzzioMoreira/projects/2"
       token: ${{ secrets.API_TOKEN_GITHUB }}
-
