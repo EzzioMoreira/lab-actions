@@ -6,7 +6,7 @@ on:
       - "master"
 jobs:
   add-issue:
-    uses: "EzzioMoreira/cicd_centralizado/.github/workflows/add_issues_projects.yaml@feat/add-actions-projects"
+    uses: "EzzioMoreira/lab-actions/.github/workflows/add-projects.yaml@master"
     with:
       project_url: "https://github.com/users/EzzioMoreira/projects/2"
     secrets:  
