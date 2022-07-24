@@ -1,0 +1,16 @@
+name: Add bugs to bugs project
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  add-to-project:
+    name: Add issue to project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/add-to-project@main
+        with:
+          project-url: https://github.com/users/EzzioMoreira/projects/2
+          github-token: ${{ secrets.API_TOKEN_GITHUB }}
