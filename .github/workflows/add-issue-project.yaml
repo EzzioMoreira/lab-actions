@@ -1,9 +1,9 @@
 name: "Adiciona Issues em Projects GitHub"
   
 on:
-  issues:
-    types:
-      - opened
+  push:
+    branches:
+      - "master"
 jobs:
   add-issue:
     uses: "EzzioMoreira/cicd_centralizado/.github/workflows/add_issues_projects.yaml@add-actions-projects"
